@@ -1,0 +1,61 @@
+.reveal-text {
+	--p: 0; // 0 - 100, set by animejs
+
+	position: relative;
+	display: inline-block;
+	padding: 0 var(--spacing-3);
+
+	// revealed part: background + word
+	&--clip {
+		display: block;
+		clip-path: inset(0 calc(100% - var(--p) * 1%) 0 0);
+		background: linear-gradient(
+			93.66deg,
+			rgba(25, 82, 241, 0.06) 0%,
+			rgba(65, 141, 248, 0.06) 98.87%
+		);
+
+		&--word {
+			display: inline-block;
+			padding: 0 var(--spacing-3);
+			white-space: nowrap;
+		}
+	}
+
+	// blue scan line that leads the reveal
+	&--scan {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: calc(var(--p) * 1%);
+		width: 2px;
+		border-radius: 999px;
+		background: #1952f1;
+		transform: translateX(-50%);
+		pointer-events: none;
+	}
+
+	&--trail {
+		position: absolute;
+		right: 0;
+		bottom: -10px;
+		display: flex;
+		justify-content: flex-end;
+		width: 500px !important;
+		height: 10px;
+		overflow: hidden;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+	}
+
+	&[data-revealed] &--trail {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal-text {
+		--p: 100;
+	}
+}

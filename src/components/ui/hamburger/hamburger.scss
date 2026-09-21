@@ -1,0 +1,103 @@
+@use "../../../styles/mixins" as *;
+
+.hamburger {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-10);
+	padding: var(--spacing-5) var(--spacing-5) var(--spacing-8);
+	background: var(--color-bg-secondary);
+	overflow-y: auto;
+
+	// hidden state
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-12px);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease,
+		visibility 0s linear 0.3s;
+
+	&[data-open] {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease,
+			visibility 0s;
+	}
+
+	&--header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: var(--spacing-2) var(--spacing-2) var(--spacing-2)
+			var(--spacing-4);
+	}
+
+	&--logo {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-2-5);
+
+		&--name {
+			color: var(--color-text-primary);
+			@include text-label-logo;
+		}
+	}
+
+	&--close {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		padding: 0;
+		border: 0;
+		border-radius: 50%;
+		background: transparent;
+		color: var(--color-text-primary);
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	&--nav {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+
+		&--item {
+			padding: var(--spacing-5) var(--spacing-4);
+			border-bottom: 1px solid #0000001a;
+			color: var(--color-text-secondary);
+			@include text-body-xl-medium;
+			text-decoration: none;
+
+			&[data-active] {
+				color: var(--color-text-primary);
+			}
+		}
+	}
+
+	&--action {
+		> * {
+			width: 100%;
+		}
+	}
+}
+
+// menu only exists on mobile/tablet
+@media (min-width: 921px) {
+	.hamburger {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hamburger {
+		transition: none;
+	}
+}

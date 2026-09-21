@@ -1,0 +1,29 @@
+@use "sass:math";
+
+// Default viewport range
+$min-viewport: 375;
+$max-viewport: 1920;
+
+// Calculate fluid value using clamp()
+@function fluid(
+	$min-size,
+	$max-size,
+	$min-viewport-width: $min-viewport,
+	$max-viewport-width: $max-viewport
+) {
+	// Calculate slope
+	$slope: math.div(
+		$max-size - $min-size,
+		$max-viewport-width - $min-viewport-width
+	);
+
+	// Calculate base value
+	$base: $min-size - ($slope * $min-viewport-width);
+
+	// Return fluid clamp value
+	@return clamp(
+		#{math.div($min-size, 16)}rem,
+		calc(#{math.div($base, 16)}rem + #{$slope * 100}vw),
+		#{math.div($max-size, 16)}rem
+	);
+}

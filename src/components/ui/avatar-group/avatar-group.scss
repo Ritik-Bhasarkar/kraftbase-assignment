@@ -1,0 +1,80 @@
+@use "../../../styles/mixins" as *;
+
+.avatar-group {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-4);
+	width: fit-content;
+
+	&--avatars {
+		display: flex;
+		align-items: center;
+	}
+
+	&--item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 36px;
+		height: 36px;
+		border: 3px solid #ffffff;
+		border-radius: 50%;
+		overflow: hidden;
+		opacity: 0; // animejs fades these in
+		will-change: transform, opacity;
+
+		// overlap the avatars
+		& + & {
+			margin-left: calc(var(--spacing-3) * -1);
+		}
+
+		&--count {
+			background: #6ea3dd;
+			color: #ffffff;
+		}
+	}
+
+	&--image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&--text {
+		color: var(--color-text-secondary);
+		@include text-body-md;
+		text-transform: capitalize;
+	}
+}
+
+@media (max-width: 768px) {
+	.avatar-group {
+		gap: var(--spacing-3);
+
+		&--item {
+			width: 44px;
+			height: 44px;
+		}
+	}
+}
+
+@media (max-width: 380px) {
+	.avatar-group {
+		flex-direction: column;
+		gap: var(--spacing-3);
+
+		&--item {
+			width: 44px;
+			height: 44px;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.avatar-group {
+		&--item {
+			opacity: 1;
+		}
+	}
+}

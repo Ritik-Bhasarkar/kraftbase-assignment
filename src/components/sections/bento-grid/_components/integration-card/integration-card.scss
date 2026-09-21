@@ -1,0 +1,199 @@
+.integration-hub {
+	position: relative;
+	width: 100%;
+	max-width: 32rem;
+	aspect-ratio: 720 / 455;
+	border: 1px solid #0000001a;
+	border-radius: 48px;
+	overflow: hidden;
+	background: url("/assets/image/mask/bento/integration.png") center / 100%
+		auto no-repeat;
+
+	&--lines {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+
+		path {
+			fill: none;
+			vector-effect: non-scaling-stroke;
+		}
+
+		&--base {
+			stroke: #1f2a4a40;
+			stroke-width: 1.5;
+			stroke-dasharray: 4 4;
+		}
+
+		&--pulse {
+			stroke: #1952f1;
+			stroke-width: 2;
+			stroke-linecap: round;
+			stroke-dasharray: 12 88; // 12% of the path is the moving pulse
+			stroke-dashoffset: 0;
+			animation: integration-hub-flow 2.4s linear infinite;
+		}
+	}
+
+	&--node {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 10.8%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: #ffffff;
+		box-shadow: 0 0 0 6px #ffffffb3;
+		transform: translate(-50%, -50%);
+		color: #1952f1;
+
+		&--left-top {
+			left: 17.2%;
+			top: 32.5%;
+		}
+
+		&--left-bottom {
+			left: 17.2%;
+			top: 65%;
+		}
+
+		&--right-top {
+			left: 86.5%;
+			top: 32.5%;
+		}
+
+		&--right-bottom {
+			left: 86.5%;
+			top: 65%;
+		}
+	}
+
+	&--center {
+		position: absolute;
+		left: 51.9%;
+		top: 45%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 23.6%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: #0000000d;
+		transform: translate(-50%, -50%);
+
+		&--inner {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 62%;
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background: #ffffff;
+			color: #1952f1;
+		}
+	}
+
+	&--label {
+		position: absolute;
+		left: 51.9%;
+		top: 82.5%;
+		padding: var(--spacing-4) var(--spacing-6);
+		border: 1px solid #ffffff40;
+		border-radius: 20px;
+		background: linear-gradient(93deg, #1952f1 0%, #418df8 100%);
+		transform: translate(-50%, -50%);
+		white-space: nowrap;
+
+		&--text {
+			color: #ffffff;
+		}
+	}
+}
+
+@keyframes integration-hub-flow {
+	from {
+		stroke-dashoffset: 0;
+	}
+	to {
+		stroke-dashoffset: -100;
+	}
+}
+
+// Large screens
+@media (min-width: 1992px) {
+	.integration-hub {
+		max-width: 880px;
+
+		&--label {
+			padding: var(--spacing-5) var(--spacing-7);
+		}
+	}
+}
+
+// Small laptop / tablet landscape
+@media (max-width: 1024px) {
+	.integration-hub {
+		border-radius: 40px;
+	}
+}
+
+// Tablet
+@media (max-width: 768px) {
+	.integration-hub {
+		max-width: 100%;
+		border-radius: 32px;
+
+		&--node {
+			box-shadow: 0 0 0 5px #ffffffb3;
+		}
+
+		&--label {
+			padding: var(--spacing-3) var(--spacing-5);
+			border-radius: 16px;
+		}
+	}
+}
+
+// Mobile
+@media (max-width: 480px) {
+	.integration-hub {
+		border-radius: 24px;
+
+		&--lines--pulse {
+			stroke-width: 1.5;
+		}
+
+		&--node {
+			width: 13%;
+			box-shadow: 0 0 0 3px #ffffffb3;
+
+			svg,
+			img {
+				width: 50%;
+				height: 50%;
+			}
+		}
+
+		&--center {
+			width: 26%;
+		}
+
+		&--label {
+			padding: var(--spacing-2-5) var(--spacing-4);
+			border-radius: 12px;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.integration-hub {
+		&--lines {
+			&--pulse {
+				animation: none;
+				opacity: 0;
+			}
+		}
+	}
+}

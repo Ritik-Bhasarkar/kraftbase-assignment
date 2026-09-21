@@ -1,0 +1,54 @@
+@use "../styles/global.scss" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+	--color-bg-primary: #ffffff1a;
+	--color-bg-secondary: #f8f8f9;
+
+	--color-text-primary: #000000;
+	--color-text-secondary: #6d6d6d;
+	--color-text-tertiary: #ffffff;
+
+	--navbar-drop-shadow: 0px 0px 54px 0px #124e8e24;
+	--navbar-backdrop-filter: blue(64px);
+	--navbar-inner-shadow: 0px 0px 13px 0px #124e8e0d inset;
+}
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	overflow-x: hidden;
+	margin: 0;
+	background-color: var(--color-bg-secondary);
+	font-family: "Inter", sans-serif;
+	font-optical-sizing: auto;
+	font-style: normal;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	ul,
+	li {
+		margin: 0;
+		padding: 0;
+	}
+
+	// background: linear-gradient(
+	// 	183.44deg,
+	// 	rgba(202, 235, 253, 0.61) 4.45%,
+	// 	rgba(206, 213, 249, 0.61) 20.94%,
+	// 	rgba(255, 255, 255, 0.61) 38.74%
+	// );
+}

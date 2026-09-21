@@ -1,0 +1,42 @@
+@use "../../../styles/mixins" as *;
+
+.bento-item {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-8);
+	width: 100%;
+
+	&--top {
+		display: flex;
+		gap: var(--spacing-4);
+		flex-direction: column;
+
+		&--header {
+			display: flex;
+			align-items: center;
+			gap: var(--spacing-4);
+
+			&--icon {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+			}
+
+			&--text {
+				color: var(--color-text-primary);
+				@include text-heading-md-strong;
+			}
+		}
+
+		&--subtext {
+			color: var(--color-text-secondary);
+			@include text-body-lg;
+			max-width: 28rem;
+		}
+	}
+
+	&--content {
+		width: 100%;
+	}
+}

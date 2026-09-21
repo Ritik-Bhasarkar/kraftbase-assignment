@@ -1,0 +1,116 @@
+.bento-grid {
+	padding: var(--spacing-18) 0 var(--spacing-12) 0;
+	display: flex;
+	gap: var(--spacing-8);
+	flex-direction: column;
+	align-items: center;
+
+	&--header {
+		display: flex;
+		max-width: 900px;
+	}
+
+	&--items {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: repeat(2, auto);
+	}
+
+	&--item {
+		padding: var(--spacing-10);
+		border: 0 solid #0000001a;
+
+		// top line on the first row
+		&:nth-child(-n + 2) {
+			border-top-width: 1px;
+		}
+
+		// line between the two columns
+		&:nth-child(odd) {
+			border-right-width: 1px;
+		}
+
+		// line between the two rows
+		&:nth-child(-n + 2) {
+			border-bottom-width: 1px;
+		}
+	}
+}
+
+// Large screens
+@media (min-width: 1992px) {
+	.bento-grid {
+		padding: var(--spacing-16) var(--spacing-24);
+		gap: var(--spacing-10);
+
+		&--header {
+			max-width: 1100px;
+		}
+
+		&--items {
+			max-width: 1800px;
+		}
+
+		&--item {
+			padding: var(--spacing-15);
+		}
+	}
+}
+
+// Small laptop / tablet landscape
+@media (max-width: 1024px) {
+	.bento-grid {
+		padding: var(--spacing-15) var(--spacing-10);
+		gap: var(--spacing-7);
+
+		&--item {
+			padding: var(--spacing-7);
+		}
+	}
+}
+
+// Tablet: single column
+@media (max-width: 768px) {
+	.bento-grid {
+		padding: var(--spacing-11) var(--spacing-6);
+		gap: var(--spacing-6);
+
+		&--header {
+			max-width: 100%;
+		}
+
+		&--items {
+			grid-template-columns: minmax(0, 1fr);
+			grid-template-rows: none;
+		}
+
+		// specificity matches the base rules; later order wins
+		&--item:nth-child(n) {
+			padding: var(--spacing-7) var(--spacing-5);
+			border-width: 0;
+			border-bottom-width: 1px;
+		}
+
+		&--item:first-child {
+			border-top-width: 1px;
+		}
+	}
+}
+
+// Mobile
+@media (max-width: 480px) {
+	.bento-grid {
+		padding: var(--spacing-8) var(--spacing-6);
+		gap: var(--spacing-5);
+
+		&--item:nth-child(n) {
+			padding: var(--spacing-6) var(--spacing-3);
+		}
+	}
+
+	.bento-image {
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+	}
+}

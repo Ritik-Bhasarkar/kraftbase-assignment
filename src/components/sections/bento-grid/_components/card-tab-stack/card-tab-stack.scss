@@ -1,0 +1,145 @@
+.card-tab-stack {
+	--ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--step: 92px;
+	position: relative;
+	width: 100%;
+	max-width: 32rem;
+	aspect-ratio: 720 / 455;
+	border: 1px solid #0000001a;
+	border-radius: 48px;
+	overflow: hidden;
+	background: url("/assets/image/mask/bento/stack-card.png") center / 100%
+		auto no-repeat;
+
+	&--card {
+		position: absolute;
+		display: flex;
+		width: min(270px, 88%);
+		border-radius: 24px;
+		box-shadow: 0 0 0 8px #ffffffb3;
+		overflow: hidden;
+		left: calc(50% + var(--x));
+		top: calc(50% + var(--y));
+		transform: translate(-50%, -50%) rotate(var(--r));
+		z-index: var(--z);
+		transition:
+			left 0.6s var(--ease),
+			top 0.6s var(--ease),
+			transform 0.6s var(--ease);
+		will-change: transform, top, left;
+
+		// tiled default layout
+		&:nth-of-type(1) {
+			--x: -6%;
+			--y: -20%;
+			--r: -3deg;
+			--z: 3;
+		}
+
+		&:nth-of-type(2) {
+			--x: 8%;
+			--y: 0%;
+			--r: 2deg;
+			--z: 2;
+		}
+
+		&:nth-of-type(3) {
+			--x: -8%;
+			--y: 20%;
+			--r: 0deg;
+			--z: 1;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&--floating {
+		position: absolute;
+		right: 6%;
+		bottom: -4%;
+		z-index: 4;
+		width: 60px;
+		height: 60px;
+		border-radius: 18px;
+		box-shadow: 0 0 0 6px #ffffffb3;
+		transform: rotate(12deg);
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	// stacked, one on top of another with a gap
+	&:hover &--card {
+		--x: 0%;
+		--r: 0deg;
+
+		&:nth-of-type(1) {
+			--y: calc(var(--step) * -1);
+		}
+
+		&:nth-of-type(2) {
+			--y: 0px;
+		}
+
+		&:nth-of-type(3) {
+			--y: var(--step);
+		}
+	}
+}
+
+// Small laptop / tablet landscape
+@media (max-width: 1024px) {
+	.card-tab-stack {
+		border-radius: 40px;
+	}
+}
+
+// Tablet
+@media (max-width: 768px) {
+	.card-tab-stack {
+		max-width: 100%;
+		height: 380px;
+		border-radius: 32px;
+
+		&--card {
+			border-radius: 20px;
+			box-shadow: 0 0 0 6px #ffffffb3;
+		}
+	}
+}
+
+// Mobile
+@media (max-width: 480px) {
+	.card-tab-stack {
+		--step: 84px;
+
+		height: 320px;
+		border-radius: 24px;
+
+		&--card {
+			width: 88%;
+			border-radius: 16px;
+			box-shadow: 0 0 0 4px #ffffffb3;
+		}
+
+		&--floating {
+			border-radius: 14px;
+			box-shadow: 0 0 0 4px #ffffffb3;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.card-tab-stack--card {
+		transition: none;
+	}
+}

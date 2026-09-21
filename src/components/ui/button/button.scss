@@ -1,0 +1,116 @@
+@use "../../../styles/mixins" as *;
+
+:root {
+	--button-primary-bg-start: #1952f1;
+	--button-primary-bg-end: #418df8;
+	--button-primary-border-start: #6095db;
+	--button-primary-border-end: #1650eb;
+
+	--button-secondary-bg: #ffffff;
+	--button-secondary-border: #00000014;
+	--button-secondary-fg: #1f2a4a;
+
+	--button-tertiary-fg: #1952f1;
+	--button-disabled-opacity: 0.5;
+}
+
+.button {
+	position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+	gap: var(--spacing-3);
+	border: 4px solid transparent;
+	cursor: pointer;
+	font-family: inherit;
+
+	&:disabled {
+		opacity: var(--button-disabled-opacity);
+		cursor: not-allowed;
+	}
+
+	transition: transform 0.2s var(--ease);
+
+	&:hover {
+		transform: scale(1.02);
+	}
+
+	&:active {
+		transform: scale(0.98);
+	}
+
+	&--text {
+		display: inline-flex;
+		align-items: center;
+		text-align: center;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&--icon {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		flex-shrink: 0;
+	}
+
+	&--small {
+		@include text-button-sm;
+		padding: var(--spacing-3) var(--spacing-6);
+		border-radius: 14px;
+	}
+
+	&--large {
+		@include text-button-lg;
+		padding: var(--spacing-6) var(--spacing-8);
+		border-radius: 18px;
+
+		&.button--icon-only {
+			padding: var(--spacing-5);
+		}
+	}
+
+	&--primary {
+		color: var(--color-text-tertiary);
+		background:
+			linear-gradient(
+					93.66deg,
+					var(--button-primary-bg-start) 0%,
+					var(--button-primary-bg-end) 98.87%
+				)
+				padding-box,
+			linear-gradient(
+					93.37deg,
+					var(--button-primary-border-start) 7.39%,
+					var(--button-primary-border-end) 99.35%
+				)
+				border-box;
+	}
+
+	&--secondary {
+		color: var(--button-secondary-fg);
+		background-color: var(--button-secondary-bg);
+		border-color: var(--button-secondary-border);
+		box-shadow: 0px 80px 140px 0px #1f2a4a1a;
+	}
+
+	&--tertiary {
+		color: var(--button-tertiary-fg);
+		background: transparent;
+	}
+
+	&--white-border::before {
+		content: "";
+		position: absolute;
+		inset: -12px;
+		border: 4px solid #00000014;
+		border-radius: 24px;
+		pointer-events: none;
+	}
+
+	&--rounded {
+		border-radius: 18px;
+	}
+}

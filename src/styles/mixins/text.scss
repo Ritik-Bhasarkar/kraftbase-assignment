@@ -1,0 +1,172 @@
+@mixin text-base($size, $weight, $lh, $ls: var(--letter-spacing-normal)) {
+	font-size: $size;
+	font-weight: $weight;
+	line-height: $lh;
+	letter-spacing: $ls;
+}
+
+@mixin hero-heading() {
+	@include text-base(
+		var(--font-size-display-xl),
+		var(--font-weight-semibold),
+		var(--line-height-display),
+		var(--letter-spacing-tight)
+	);
+}
+
+// Display
+@mixin text-display() {
+	@include text-base(
+		var(--font-size-display),
+		var(--font-weight-semibold),
+		var(--line-height-display),
+		var(--letter-spacing-tight)
+	);
+}
+
+// Headings
+@mixin text-heading-lg() {
+	@include text-base(
+		var(--font-size-6xl),
+		var(--font-weight-semibold),
+		var(--line-height-none),
+		var(--letter-spacing-tight)
+	);
+}
+@mixin text-heading-md() {
+	@include text-base(
+		var(--font-size-5xl),
+		var(--font-weight-regular),
+		var(--line-height-heading),
+		var(--letter-spacing-tight)
+	);
+}
+@mixin text-heading-md-strong() {
+	@include text-base(
+		var(--font-size-5xl),
+		var(--font-weight-semibold),
+		var(--line-height-heading),
+		var(--letter-spacing-tight)
+	);
+}
+@mixin text-heading-sm() {
+	@include text-base(
+		var(--font-size-4xl),
+		var(--font-weight-semibold),
+		var(--line-height-none)
+	);
+}
+@mixin text-heading-xs() {
+	@include text-base(
+		var(--font-size-3xl),
+		var(--font-weight-semibold),
+		var(--line-height-none)
+	);
+}
+
+// Body
+@mixin text-body-xl() {
+	@include text-base(
+		var(--font-size-3xl),
+		var(--font-weight-regular),
+		var(--line-height-sm)
+	);
+}
+@mixin text-body-xl-medium() {
+	@include text-base(
+		var(--font-size-3xl),
+		var(--font-weight-medium),
+		var(--line-height-sm)
+	);
+}
+@mixin text-body-lg-quote() {
+	@include text-base(
+		var(--font-size-2xl),
+		var(--font-weight-medium),
+		var(--line-height-quote)
+	);
+	font-style: italic;
+}
+
+@mixin text-body-xl-quote() {
+	@include text-base(
+		var(--font-size-3xl),
+		var(--font-weight-medium),
+		var(--line-height-quote)
+	);
+	font-style: italic;
+}
+@mixin text-body-lg() {
+	@include text-base(
+		var(--font-size-xl),
+		var(--font-weight-regular),
+		var(--line-height-lg)
+	);
+}
+@mixin text-body-md() {
+	@include text-base(
+		var(--font-size-lg),
+		var(--font-weight-regular),
+		var(--line-height-sm)
+	);
+}
+@mixin text-body-md-strong() {
+	@include text-base(
+		var(--font-size-lg),
+		var(--font-weight-semibold),
+		var(--line-height-sm)
+	);
+}
+
+// Labels
+@mixin text-label-lg() {
+	@include text-base(
+		var(--font-size-2xl),
+		var(--font-weight-medium),
+		var(--line-height-none)
+	);
+}
+@mixin text-label-md() {
+	@include text-base(
+		var(--font-size-lg),
+		var(--font-weight-medium),
+		var(--line-height-none)
+	);
+}
+@mixin text-label-logo() {
+	@include text-base(
+		var(--font-size-xl),
+		var(--font-weight-semibold),
+		var(--line-height-md)
+	);
+}
+@mixin text-label-highlight() {
+	@include text-base(
+		var(--font-size-4xl),
+		var(--font-weight-bold),
+		var(--line-height-none)
+	);
+}
+@mixin text-label-marquee() {
+	@include text-base(
+		var(--font-size-3xl),
+		var(--font-weight-medium),
+		var(--line-height-none)
+	);
+}
+
+// Buttons
+@mixin text-button-lg() {
+	@include text-base(
+		var(--font-size-sm),
+		var(--font-weight-bold),
+		var(--line-height-none)
+	);
+}
+@mixin text-button-sm() {
+	@include text-base(
+		var(--font-size-sm),
+		var(--font-weight-bold),
+		var(--line-height-none)
+	);
+}
