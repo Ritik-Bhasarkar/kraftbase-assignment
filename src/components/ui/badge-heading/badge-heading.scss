@@ -32,6 +32,16 @@
 			@include text-display;
 			font-size: 36px;
 			text-align: center;
+
+			background: linear-gradient(
+				109.6deg,
+				#020218 52.82%,
+				#1948bd 103.54%
+			);
+
+			background-clip: text;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
 		}
 	}
 

@@ -6,10 +6,11 @@
 	align-items: center;
 	gap: var(--spacing-8);
 	padding: var(--spacing-18) var(--spacing-6);
+	background: url("/assets/image/mask/footer.png") center / cover no-repeat;
 
 	&--header {
 		width: 100%;
-		max-width: 1200px;
+		max-width: 800px;
 		display: flex;
 		align-items: center;
 		justify-content: center;

@@ -13,13 +13,14 @@
 	grid-area: 1 / 1;
 	display: flex;
 	flex-direction: column;
-	gap: var(--spacing-5);
+	gap: var(--spacing-8);
 	width: var(--card-w);
 	min-height: 340px;
 	padding: var(--spacing-8);
 	border: 1px solid #0000001a;
 	border-radius: 32px;
-	transform: translateX(calc(var(--offset) * (100% + var(--gap)))) scale(0.9);
+	transform: translate(calc(var(--offset) * (100% + var(--gap))), 40px)
+		scale(0.9);
 	opacity: 0.6;
 	transition:
 		transform 0.6s var(--ease),
@@ -156,9 +157,29 @@
 	&--stage {
 		position: relative;
 		width: 100%;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: calc(var(--controls-h) + var(--pad));
+			width: clamp(60px, 10vw, 160px);
+			z-index: 4;
+			pointer-events: none;
+		}
+
+		&::before {
+			left: 0;
+			background: linear-gradient(to right, #ffffff 0%, #ffffff00 100%);
+		}
+
+		&::after {
+			right: 0;
+			background: linear-gradient(to left, #ffffff 0%, #ffffff00 100%);
+		}
 	}
 
-	
 	&--frame {
 		position: absolute;
 		inset: 0; // stretches to match --stage's content-driven height
@@ -182,6 +203,7 @@
 		align-items: start;
 		padding: var(--pad) 0 calc(var(--controls-h) + var(--pad));
 		pointer-events: none;
+		align-items: center;
 	}
 
 	&--scroller {

@@ -11,15 +11,31 @@ const links = [
 ];
 
 const socials = [
-	{ name: "facebook", icon: "/assets/svg/social/facebook.svg", angle: -52 },
+	{
+		name: "facebook",
+		icon: "/assets/svg/social/facebook.svg",
+		angle: -52,
+		ring: "outer",
+	},
 	{
 		name: "instagram",
 		icon: "/assets/svg/social/instagram.svg",
 		angle: -36,
+		ring: "inner",
 	},
-	{ name: "youtube", icon: "/assets/svg/social/youtube.svg", angle: 36 },
-	{ name: "x", icon: "/assets/svg/social/x.svg", angle: 52 },
-];
+	{
+		name: "youtube",
+		icon: "/assets/svg/social/youtube.svg",
+		angle: 36,
+		ring: "inner",
+	},
+	{
+		name: "x",
+		icon: "/assets/svg/social/x.svg",
+		angle: 52,
+		ring: "outer",
+	},
+] as const;
 
 const Footer = () => {
 	return (
@@ -32,6 +48,7 @@ const Footer = () => {
 						<div
 							className="footer--orbit--item"
 							key={social.name}
+							data-ring={social.ring}
 							style={
 								{
 									"--base": social.angle,
@@ -51,24 +68,29 @@ const Footer = () => {
 					))}
 				</div>
 			</div>
+			<div
+				className="footer--ring-outer"
+				aria-hidden="true"
+			/>
 
 			<div className="footer--cta">
 				<div className="footer--cta--logo">
 					<Image
 						src="/assets/svg/brand/collect-edge.svg"
 						alt="Collectedge"
-						width={38}
-						height={38}
+						width={24}
+						height={24}
 					/>
 				</div>
-
-				<BadgeHeading
-					badgeText="Contact us"
-					text="We also need to have contact form on the website"
-					subText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
-					buttonText="Get Started"
-					buttonTrailingIcon="/assets/svg/arrow-upright.svg"
-				/>
+				<div className="footer--cta--heading">
+					<BadgeHeading
+						badgeText="Contact us"
+						text="We also need to have contact form on the website"
+						subText="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
+						buttonText="Get Started"
+						buttonTrailingIcon="/assets/svg/arrow-upright.svg"
+					/>
+				</div>
 			</div>
 
 			<div className="footer--main">
@@ -91,8 +113,8 @@ const Footer = () => {
 						<Image
 							src="/assets/svg/brand/collect-edge.svg"
 							alt=""
-							width={38}
-							height={40}
+							width={28}
+							height={30}
 						/>
 
 						<span className="footer--main--brand--name">
